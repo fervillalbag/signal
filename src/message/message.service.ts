@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
 import { Message } from './entities/message.entity';
-import { PusherService } from 'src/pusher/pusher.service';
+import { PusherService } from '../pusher/pusher.service';
 
 @Injectable()
 export class MessageService {
@@ -18,14 +18,22 @@ export class MessageService {
     return message;
   }
 
-  getAll(senderId: string, receiverId: string) {
+  getAll(user1: string, user2?: string) {
+    if (!user2) {
+      return this.messageService
+        .find({
+          $or: [{ sender: user1 }, { receiver: user1 }],
+        })
+        .populate('sender receiver');
+    }
+
     return this.messageService
       .find({
         $or: [
-          { sender: senderId, receiver: receiverId },
-          { receiver: senderId, sender: receiverId },
+          { sender: user1, receiver: user2 },
+          { receiver: user1, sender: user2 },
         ],
       })
-      .populate('sender');
+      .populate('sender receiver');
   }
 }

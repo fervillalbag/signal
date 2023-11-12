@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { MessageService } from './message.service';
 import { MessageController } from './message.controller';
 import { Message, MessageSchema } from './entities/message.entity';
-import { PusherService } from 'src/pusher/pusher.service';
+import { PusherService } from '../pusher/pusher.service';
 
 @Module({
   imports: [

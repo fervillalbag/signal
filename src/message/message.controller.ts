@@ -11,7 +11,7 @@ export class MessageController {
   }
 
   @Get()
-  getAll(@Query() query: { senderId: string; receiverId: string }) {
-    return this.messageService.getAll(query.senderId, query.receiverId);
+  getAll(@Query() query: { user1: string; user2: string }) {
+    return this.messageService.getAll(query.user1, query.user2);
   }
 }
