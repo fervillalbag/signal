@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
-import { PusherService } from './pusher/pusher.service';
 import { MessageModule } from './message/message.module';
 import { UserModule } from './user/user.module';
 
@@ -17,6 +16,6 @@ import { UserModule } from './user/user.module';
     UserModule,
   ],
   controllers: [AppController],
-  providers: [PusherService],
+  providers: [],
 })
 export class AppModule {}

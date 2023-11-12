@@ -1,20 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { PusherService } from './pusher/pusher.service';
+import { Controller } from '@nestjs/common';
 
 @Controller()
-export class AppController {
-  constructor(private pusherService: PusherService) {}
-
-  @Post()
-  createMessage(
-    @Body('username') username: string,
-    @Body('message') message: string,
-  ) {
-    this.pusherService.trigger('chat', 'message', {
-      username,
-      message,
-    });
-
-    return [];
-  }
-}
+export class AppController {}

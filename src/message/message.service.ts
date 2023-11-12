@@ -9,12 +9,12 @@ import { PusherService } from '../pusher/pusher.service';
 export class MessageService {
   constructor(
     @InjectModel(Message.name) private readonly messageService: Model<Message>,
-    private pusherService: PusherService,
+    private readonly pusherService: PusherService,
   ) {}
 
   async create(createMessageDto: any) {
     const message = await this.messageService.create(createMessageDto);
-    this.pusherService.trigger('chat', 'message', message);
+    this.pusherService.trigger('testing-chat', 'testing-message', message);
     return message;
   }
 
