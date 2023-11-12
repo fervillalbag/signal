@@ -52,6 +52,7 @@ export class UserService {
       const payload = {
         id: emailExists?._id,
         email: emailExists?.email,
+        name: emailExists?.name,
       };
 
       return {
