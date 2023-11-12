@@ -10,6 +10,16 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Post('login')
+  login(@Body() loginUserDto: any) {
+    return this.userService.login(loginUserDto);
+  }
+
+  @Get()
+  getAll() {
+    return this.userService.getAll();
+  }
+
   @Get(':id')
   get(@Param('id') id: string) {
     return this.userService.get(id);

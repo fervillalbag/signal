@@ -9,7 +9,9 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: '.env.local',
+    }),
     MongooseModule.forRoot(process.env.MONGO_DB),
     MessageModule,
     UserModule,
